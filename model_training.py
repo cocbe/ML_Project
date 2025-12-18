@@ -50,8 +50,17 @@ def train_models(X, y):
 
     # SVM
     start = time.time()
-    svm = SVC(C=10, gamma="scale", kernel="rbf", probability=True)
-    svm.fit(X_train_pca, y_train)
+    # Small grid search for SVM C parameter to improve generalization
+    from sklearn.model_selection import GridSearchCV
+
+    param_grid = {
+        'C': [1, 10, 50]
+    }
+
+    svm_base = SVC(gamma="scale", kernel="rbf", probability=True)
+    grid = GridSearchCV(svm_base, param_grid, cv=3, n_jobs=-1, scoring='accuracy')
+    grid.fit(X_train_pca, y_train)
+    svm = grid.best_estimator_
     svm_time = time.time() - start
 
     svm_probs = svm.predict_proba(X_test_pca)

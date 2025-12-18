@@ -6,13 +6,14 @@ from skimage.feature import hog, local_binary_pattern
 
 # --- HOG (Shape) ---
 HOG_ORIENTATIONS = 9
+# revert to original pixels-per-cell
 HOG_PPC = (32, 32)
 HOG_CPB = (2, 2)
 # --- LBP (Texture) ---
 LBP_POINTS = 8
 LBP_RADIUS = 1
 # --- Color Histogram ---
-HIST_BINS = 8             
+HIST_BINS = 8            
 
 # =========================================
 

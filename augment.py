@@ -8,7 +8,7 @@ from count import get_images_in_ram
 aug_flag = False
 
 
-IMAGE_EXTENSIONS =".jpg"
+IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png")
 
 # ================= CONFIG =================
 AUGMENTATION = ['rotate','hflip','vflip','brightness','contrast','scale','crop', 'blur', 'hue']

@@ -13,7 +13,11 @@ def count_images(dataset_path, resize):
         if not os.path.isdir(class_path):
             continue
 
-        images = sorted([f for f in os.listdir(class_path) if f.lower().endswith(".jpg")])
+        # support multiple common image extensions
+        images = sorted([
+            f for f in os.listdir(class_path)
+            if f.lower().endswith((".jpg", ".jpeg", ".png"))
+        ])
         counts[cls] = len(images)
 
         
